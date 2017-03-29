@@ -10,6 +10,8 @@ SQL
 
 ☑ PostGreSQL
 
+---
+
 NoSQL
 
 ☑ MongoDB
