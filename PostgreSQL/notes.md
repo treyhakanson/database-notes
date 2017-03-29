@@ -272,39 +272,3 @@ can use `AS` implicitly just by placing a space between the column's name and it
 SELECT <col> <col_name> FROM <table>;
 ```
 
-### JOIN
-
-joins relate data across multiple tables
-
-#### Types of JOIN Clauses
-
-![Types of SQL JOIN Clauses](https://www.codeproject.com/KB/database/Visual_SQL_Joins/Visual_SQL_JOINS_orig.jpg)
-
-Types of `JOIN` Clauses:
-
-- LEFT JOIN
-- RIGHT JOIN
-- INNER JOIN
-- OUTER JOIN
-- FULL OUTER JOIN
-
-#### INNER JOIN
-
-the most basic type of `JOIN`
-
-an `INNER JOIN` clause returns rows in `A` table that have corresponding rows in `B` table
-
-let's say we have a table `A` with keys `key1` and `key2`, and a table `B` with keys `key3`, `key4`, and `key5` where `B.key5` corresponds to `A.key1`:
-
-```sql
-SELECT A.key1 A.key2, B.key3, B.key4
-FROM A
-INNER JOIN B ON A.key1 = B.key3;
-```
-
-`A` is the main table, and `B` is the tabled being joined to
-
-specifying the table when selecting (`A.key`) is only mandatory if the `key` appears in both tables
-
-`INNER` can be dropped; `JOIN` by itself will default to an `INNER JOIN`
-
