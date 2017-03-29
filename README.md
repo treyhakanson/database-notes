@@ -7,9 +7,11 @@ Nothing crazy, just notes I've taken on various databases for my own purposes. H
 ## Databases Discussed
 
 SQL
+
 ☑ PostGreSQL
 
 NoSQL
+
 ☑ MongoDB
 
 more to come in the future
