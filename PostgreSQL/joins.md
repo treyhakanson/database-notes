@@ -10,10 +10,10 @@ example data (Tables A and B) for the purpose of explaining the different types 
 
 | A.id        | A.name      | B.id        | B.name      |
 | ----------- | :---------: | ----------- | :---------: |
-| *1*         | Pirate      | *1*         | Rutabage    |
-| *2*         | Monkey      | *2*         | Pirate      |
-| *3*         | Ninja       | *3*         | Darth Vader |
-| *4*         | Spaghetti   | *4*         | Ninja       |
+| **1**       | Pirate      | **1**       | Rutabage    |
+| **2**       | Monkey      | **2**       | Pirate      |
+| **3**       | Ninja       | **3**       | Darth Vader |
+| **4**       | Spaghetti   | **4**       | Ninja       |
 
 ---
 
@@ -31,12 +31,12 @@ ON A.name = B.name;
 
 | A.id        | A.name      | B.id        | B.name      |
 | ----------- | :---------: | ----------- | :---------: |
-| *1*         | Pirate      | *2*         | Pirate      |
-| *2*         | Monkey      | `null`      | `null`      |
-| *3*         | Ninja       | *4*         | Ninja       |
-| *4*         | Spaghetti   | `null`      | `null`      |
-| `null`      | `null`      | *1*         | Rutabage    |
-| `null`      | `null`      | *3*         | Darth Vader |
+| **1**       | Pirate      | **2**       | Pirate      |
+| **2**       | Monkey      | `null`      | `null`      |
+| **3**       | Ninja       | **4**       | Ninja       |
+| **4**       | Spaghetti   | `null`      | `null`      |
+| `null`      | `null`      | **1**       | Rutabage    |
+| `null`      | `null`      | **3**       | Darth Vader |
 
 ---
 
@@ -54,8 +54,8 @@ ON A.name = B.name;
 
 | A.id        | A.name      | B.id        | B.name      |
 | ----------- | :---------: | ----------- | :---------: |
-| *1*         | Pirate      | *2*         | Pirate      |
-| *3*         | Ninja       | *4*         | Ninja       |
+| **1**       | Pirate      | **2**       | Pirate      |
+| **3**       | Ninja       | **4**       | Ninja       |
 
 ---
 
@@ -73,10 +73,10 @@ ON A.name = B.name;
 
 | A.id        | A.name      | B.id        | B.name      |
 | ----------- | :---------: | ----------- | :---------: |
-| *1*         | Pirate      | *2*         | Pirate      |
-| *2*         | Monkey      | `null`      | `null`      |
-| *3*         | Ninja       | *4*         | Ninja       |
-| *4*         | Spaghetti   | `null`      | `null`      |
+| **1**       | Pirate      | **2**       | Pirate      |
+| **2**       | Monkey      | `null`      | `null`      |
+| **3**       | Ninja       | **4**       | Ninja       |
+| **4**       | Spaghetti   | `null`      | `null`      |
 
 ---
 
@@ -99,8 +99,8 @@ WHERE B.id IS null;
 
 | A.id        | A.name      | B.id        | B.name      |
 | ----------- | :---------: | ----------- | :---------: |
-| *2*         | Monkey      | `null`      | `null`      |
-| *4*         | Spaghetti   | `null`      | `null`      |
+| **2**       | Monkey      | `null`      | `null`      |
+| **4**       | Spaghetti   | `null`      | `null`      |
 
 ---
 
@@ -119,8 +119,8 @@ WHERE B.id IS null;
 
 | A.id        | A.name      | B.id        | B.name      |
 | ----------- | :---------: | ----------- | :---------: |
-| *2*         | Monkey      | `null`      | `null`      |
-| *4*         | Spaghetti   | `null`      | `null`      |
+| **2**       | Monkey      | `null`      | `null`      |
+| **4**       | Spaghetti   | `null`      | `null`      |
 
 ---
 
@@ -140,10 +140,10 @@ OR B.id IS null;
 
 | A.id        | A.name      | B.id        | B.name      |
 | ----------- | :---------: | ----------- | :---------: |
-| *2*         | Monkey      | `null`      | `null`      |
-| *4*         | Spaghetti   | `null`      | `null`      |
-| `null`      | `null`      | *1*         | Rutabage    |
-| `null`      | `null`      | *3*         | Darth Vader |
+| **2**       | Monkey      | `null`      | `null`      |
+| **4**       | Spaghetti   | `null`      | `null`      |
+| `null`      | `null`      | **1**       | Rutabage    |
+| `null`      | `null`      | **3**       | Darth Vader |
 
 ---
 
