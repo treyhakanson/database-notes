@@ -168,3 +168,7 @@ INNER JOIN B ON A.key1 = B.key3;
 specifying the table when selecting (`A.key`) is only mandatory if the `key` appears in both tables
 
 `INNER` can be dropped; `JOIN` by itself will default to an `INNER JOIN`
+
+### LEFT/RIGHT OUTER JOIN
+
+the keyword `OUTER` can be dropped when the `LEFT` or `RIGHT` keyword is present

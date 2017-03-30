@@ -272,3 +272,18 @@ can use `AS` implicitly just by placing a space between the column's name and it
 SELECT <col> <col_name> FROM <table>;
 ```
 
+### UNION
+
+combines the results of 2 separate `SELECT` queries into a single result set:
+
+```sql
+SELECT <col_1>, <col_2>
+FROM <table_1>
+UNION
+SELECT <col_1>, <col_2>
+FROM <table_2>
+```
+
+`UNION` removes all duplicate rows (unless `UNION ALL` is specified)
+
+often used to combine data from 2 similar tables that are not perfectly normalized
