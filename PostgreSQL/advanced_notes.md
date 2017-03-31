@@ -65,3 +65,11 @@ WHERE
 e1.employee_location = e2.employee_location
 AND e2.employee_name = 'John';
 ```
+
+### Schemas
+
+if there are multiple schemas for a database, need to specify which is being used 
+
+```sql
+SELECT <col> FROM <schema>.<table>;
+```
