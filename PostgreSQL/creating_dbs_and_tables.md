@@ -234,3 +234,31 @@ the `IF EXISTS` statement prevents the code trying to drop a table that doesn't 
 ## Check Constraint
 
 The `CHECK` constraint uses a boolean statement to determine whether or not data should be updated
+
+`CHECK` can be applied as a column constraint during table creation (`CREATE TABLE`), or when adding a constraint (`ALTER TABLE ... ADD CONSTRAINT`):
+
+```sql
+...
+<col_name> <data_type> CHECK(<boolean_expression>),
+...;
+```
+
+PostGreSQL will throw an error if a check is not passed. In addition, PostGreSQL will automatically name the constraint as follows so it's easy to determine the issue: `<table_name>_<col_name>_check`
+
+PostGreSQL uses similar syntax as the above for a lot of errors and such, so this is important to note.
+
+It is also possible to pass a custom name to constraints:
+
+```sql
+<col_name> <data_type> 
+CONSTRAINT <constraint_name>
+CHECK(<boolean_expression>)
+```
+
+## The "Not Null" Constraint
+
+`NULL` in PostGreSQL is different from something like "empty" or 0
+
+All this constraint does is not allow for null values to be inserted into the column
+
+if a value is 
