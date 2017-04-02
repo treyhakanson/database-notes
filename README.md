@@ -8,13 +8,13 @@ Nothing crazy, just notes I've taken on various databases for my own purposes. H
 
 SQL
 
-☑ PostGreSQL
+- PostGreSQL
 
 ---
 
 NoSQL
 
-☑ MongoDB
+- MongoDB
 
 more to come in the future
 
