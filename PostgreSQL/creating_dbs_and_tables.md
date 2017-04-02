@@ -116,7 +116,121 @@ table constraints
 - `CHECK (condition)` condition to check on uploading to the table
 - `REFERENCES` to constrain the value stored in the column that must exist in a column in another table
 
+can aslo quickly create copies of tables (same schemas) using the following:
 
+```sql
+CREATE TABLE <copy>(LIKE <original>);
+```
 
+## Data Insertion
 
+basic syntax of the `INSERT` statement
 
+```sql
+-- insert single row
+INSERT INTO <table>(<col_1>, <col_2>, ...)
+VALUES (<val_1>, <value_2>);
+
+-- insert multiple rows
+INSERT INTO <table>(<col_1>, <col_2>, ...)
+VALUES (<val_1>, <value_2>),
+       (<val_1>, <value_2>),
+       ...;
+```
+
+can also use `INSERT` to copy data from another table:
+
+```sql
+INSERT INTO <table>
+SELECT <col_1>, <col_2>
+FROM <another_table>
+WHERE <condition>;
+```
+
+important to note that something like an id will also be copied over, even if the table being copied too specifies it as a serial data type
+
+## Update Values
+
+`UPDATE` changes values in exisiting rows in a database. basic syntax:
+
+```sql
+UPDATE <table>
+SET <col_1> = <val_1>,
+    <col_2> = <val_2>,
+    ...
+WHERE <condition>;
+```
+
+Can also set a column equal to another column in the same table:
+
+```sql
+UPDATE <table>
+SET <col_1> = <col_2>;
+```
+
+`RETURNING` keyward can be used to return specific columns of the result after an update:
+
+```sql
+UPDATE <table>
+SET <col_1> = <val_1>
+RETURNING <col_1>, <col_2>, ...; 
+```
+
+## Deleting Rows
+
+self-explanatory, syntax is as follows:
+
+```sql
+DELETE FROM <table>
+WHERE <condition>;
+```
+
+the `DELETE` statement returns the number of rows deleted, and returns 0 if no rows are deleted. Can use `RETURNING` to return the rows that were deleted
+
+## Alter Table
+
+`ALTER TABLE` is used to change the format (schmea) of an exisiting table. The basic syntax is as follows:
+
+`ALTER TABLE <table> <action>`
+
+action statements in PostGreSQL:
+
+- `ADD COLUMN`
+- `DROP COLUMN`
+- `RENAME COLUMN`
+- `ADD CONSTRAINT`
+- `RENAME TO`
+
+using the above actions are relatively simple:
+
+```sql
+-- adding a column
+ALTER TABLE <table> ADD COLUMN <col_name> <data_type>;
+
+-- dropping a column
+ALTER TABLE <table> DROP COLUMN <col_name>;
+
+-- renaming a column
+ALTER TABLE <table> RENAME COLUMN <col_name> TO <new_col_name>;
+
+-- renaming the table
+ALTER TABLE <table> RENAME TO <new_name>;
+```
+
+## Dropping Tables
+
+dropping a table is the same thing as deleting it; basic syntax is:
+
+```sql
+DROP TABLE IF EXISTS <table>;
+```
+
+the `IF EXISTS` statement prevents the code trying to drop a table that doesn't exist, which throws an exception
+
+`RESTRICT` can optionally be added to the end of the drop table statement to prevent the table from being dropped if another table depends on it
+
+`CASCADE` can optionally be added to the end of the drop table statement to drop all other tables/views that are dependent on it
+
+## Check Constraint
+
+The `CHECK` constraint uses a boolean statement to determine whether or not data should be updated
