@@ -2,7 +2,9 @@
 
 ## Overview
 
-PostgreSQL is a popular, open-source database built on SQL (Structured Query Language)
+PostgreSQL is a popular, open-source database built on SQL (Structured Query Language).
+
+Check out this [link](https://www.pgexercises.com/) for some additional practice.
 
 ### Common Commands
 
@@ -87,7 +89,7 @@ basic conditional operators in PostgreSQL:
 >=  greater than or equal to
 <=  less than or equal to
 <>  not equal
-!=  not equal (alternate) 
+!=  not equal (alternate)
 AND logical and
 OR  logical or
 ```
@@ -190,7 +192,7 @@ can use any number of wildcard characters, at any position in the string
 
 `ILIKE` is PostGreSQL specific, and provides case-insensitive pattern matching
 
-### Aggregate Function (MIN, MAX, AVG, SUM)
+### Aggregate Function (MIN, MAX, AVG, SUM, etc.)
 
 aggregate functions combine a large amount of data into a single value
 

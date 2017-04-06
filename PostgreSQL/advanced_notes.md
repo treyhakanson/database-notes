@@ -68,8 +68,35 @@ AND e2.employee_name = 'John';
 
 ### Schemas
 
-if there are multiple schemas for a database, need to specify which is being used 
+if there are multiple schemas for a database, need to specify which is being used
 
 ```sql
 SELECT <col> FROM <schema>.<table>;
+```
+
+### CASE statements
+
+`CASE` statements in Postgres are generic conditional expressions, similar to if/else statements in other programming languages:
+
+```sql
+-- if this <condition> is matched, return <result>
+CASE WHEN <val>=<condition> THEN <result>
+     WHEN <val>=<other_condition> THEN <other_result>
+     ...
+     -- acts as the default case
+     ELSE <default>
+END
+```
+
+cases are added to the column selection portion of a `SELECT` statement and will show up as a column in the result of the query
+
+there is also an alternate form of the `CASE` statement that looks more similar to a switch case as opposed to an if/else:
+
+```sql
+CASE <val> 
+    WHEN <condition> THEN <result>
+    WHEN <other_condition> THEN <other_result>
+    ...
+    ELSE <default>
+END
 ```
