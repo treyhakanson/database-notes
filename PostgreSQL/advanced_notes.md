@@ -63,8 +63,11 @@ SELECT e1.employee_name
 FROM employee AS e1, employee AS e2
 WHERE
 e1.employee_location = e2.employee_location
-AND e2.employee_name = 'John';
+AND e2.employee_name = 'J
+ohn';
 ```
+
+self joins are useful when a table has columns that reference data within itself. For example, if a table of members had a "referred_by" column that consisted of a member id
 
 ### Schemas
 
@@ -100,3 +103,7 @@ CASE <val>
     ELSE <default>
 END
 ```
+
+can only name the column created by a `CASE` statement using `AS` after `END`
+
+important to note the the resulting column from a `CASE` statement cannot be used in a `WHERE` clause

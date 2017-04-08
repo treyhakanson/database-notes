@@ -110,6 +110,24 @@ SELECT COUNT(DISTINCT <col>) FROM <table>;
 SELECT COUNT(DISTINCT(<col>)) FROM <table>;
 ```
 
+stating `COUNT(*)` will simply count the number of rows, and is a safer option then `COUNT(<col>)` if some rows may have `NULL` values but a total count is desired
+
+also, keep in mind that something like the following will not work:
+
+```sql
+SELECT <col>, COUNT(*) FROM <table>;
+```
+
+this is because `COUNT` wants to collapse the table into a singular row and value. To attach a count (or any other scalar) to _all_ rows, use a subquery:
+
+```sql
+SELECT <col>,
+    (SELECT COUNT(*) from <table>)
+    FROM <table>;
+```
+
+When a scalar value is returned by the `SELECT` subquery, postgres knows to copy the value to all rows.
+
 ### LIMIT
 
 can add a `LIMIT` to a query to prevent too many results from coming back:
@@ -232,6 +250,8 @@ in summary, the above is sorting the result set by `customer_id`, and summing th
 
 similarly to `ORDER BY`, PostgreSQL can group by a column that isn't selected, but most SQL engines cannot. So, it's best practice to select the row being grouped by
 
+note that Postgres will work out if mapping is 1:1; for example, if 2 columns are selected, such as a primary key and a name that is unique to each primary key, `GROUP BY` can be used with only one of those keys. However, other databases are not this intelligent and will require grouping by all columns that are not the aggregate function, so it's best practice to include both columns. In addition, if the relationship is not 1:1, grouping by less columns will likely lead to errors.
+
 ### HAVING
 
 `HAVING` clause is used in conjunction with the `GROUP BY` clause to filter group rows that do not satisfy a particular condition
@@ -272,6 +292,15 @@ can use `AS` implicitly just by placing a space between the column's name and it
 
 ```sql
 SELECT <col> <col_name> FROM <table>;
+```
+
+also, `AS` (implicitly or explicitly) can be used with a string value:
+
+```sql
+-- explicit
+SELECT <col> AS "col_name" FROM <table>;
+-- implicit
+SELECT <col> "col_name" FROM <table>;
 ```
 
 ### UNION

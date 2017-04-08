@@ -62,3 +62,29 @@ DROP VIEW IF EXISTS <view>;
 keep in mind that dropping a table a view is dependent on will not remove it unless the `CASCADE` property is specified. In addition, the `RESTRICT` property can be used when dropping a table to prevent the action from occuring if a dependent view (or table) exists.
 
 
+## Common Table Expressions (CTEs)
+
+essentially create an inline view in a query. Good if a query involves repeated logic:
+
+```sql
+-- Without CTE
+SELECT facid, sum(slots) totalslots
+    FROM cd.bookings
+    GROUP BY facid
+    HAVING sum(slots) = (SELECT max(sum2.totalslots) FROM
+        (SELECT sum(slots) totalslots
+        FROM cd.bookings
+        GROUP BY facid
+        ) AS sum2);
+
+-- with CTE
+-- `sum` is the CTE here
+WITH sum AS (SELECT facid, sum(slots) AS totalslots
+    FROM cd.bookings
+    GROUP BY facid
+)
+SELECT facid, totalslots
+    -- `sum` is used multiple times 
+    FROM sum
+    WHERE totalslots = (SELECT max(totalslots) FROM sum);
+```
