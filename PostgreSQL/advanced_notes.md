@@ -107,3 +107,15 @@ END
 can only name the column created by a `CASE` statement using `AS` after `END`
 
 important to note the the resulting column from a `CASE` statement cannot be used in a `WHERE` clause
+
+### Casting
+
+casting to a specific type in Postgres can be valuable, and there are two available syntaxes to do so:
+
+```sql
+-- Postgres specific syntax
+SELECT '2012-08-31 01:00:00'::timestamp;
+
+-- Standard SQL syntax (works in Postgres)
+SELECT cast('2012-08-31 01:00:00' AS timestamp);
+```
